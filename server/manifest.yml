@@ -1,11 +1,24 @@
-  applications:
-  - name: djangoapp
-    routes:
-      - route: $HOST.$DOMAIN
-    memory: 128M
-    buildpack: python_buildpack
-  - name: djangoapp-nginx
-    routes:
-      - route: $HOST.$DOMAIN/static
-    memory: 128M
-    buildpack: staticfile_buildpack
+applications:
+- name: djangoapp
+  routes:
+    - route: $HOST.$DOMAIN
+  memory: 128M
+  buildpack: python_buildpack
+- name: djangoapp-nginx
+  routes:
+    - route: $HOST.$DOMAIN/static
+  memory: 128M
+  buildpack: staticfile_buildpack
+  
+# Environment variables 
+env:
+  env_type: PRODUCTION
+  IBM_CLOUD_REGION: eu-de
+  IBM_CLOUD_GROUP: Default
+  IBM_CLOUD_SPACE: djangoserver-space
+  IBM_CLOUD_ORG: adarshkhandelwal.work@gmail.com
+  MANIFEST_NAME: manifest.yml
+  IBM_CLOUD_API: IBM_CLOUD_API_KEY  # retrieved from IBM Cloud Application instance
+  SECRET_KEY: SECRET_KEY
+  WATSON_NLU_API_KEY: cb2Y5SIyzjFBd9ODHYbyGGLMDpnae5sFLDJ9cBRVrwAH
+  WATSON_NLU_URL: https://api.au-syd.natural-language-understanding.watson.cloud.ibm.com/instances/c19718bb-18f5-4d73-94ed-4fe2df588aea
