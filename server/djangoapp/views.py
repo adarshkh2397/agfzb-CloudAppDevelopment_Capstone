@@ -74,6 +74,7 @@ def logout_request(request):
 
 # Update the `get_dealerships` view to render the index page with a list of dealerships
 def get_dealerships(request):
+    #https://adarshkhande-3000.theiadocker-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get
     context = {}
     if request.method == "GET":
         return render(request, 'djangoapp/index.html', context)
