@@ -35,8 +35,7 @@ def get_request(url, api_key=False, **kwargs):
     json_data = json.loads(response.text)
 
     return json_data
-
-
+    
 # Create a `post_request` to make HTTP POST requests
 # e.g., response = requests.post(url, params=kwargs, json=payload)
 # Function for making HTTP POST requests
@@ -80,10 +79,11 @@ def get_dealers_from_cf(url, **kwargs):
 # Requires the dealer_id parameter with only a single value
 def get_dealer_by_id(url, dealer_id):
     # Call get_request with the dealer_id param
-    json_result = get_request(url, dealerId=dealer_id)
+    json_result = get_request(url, id=dealer_id)
 
     # Create a CarDealer object from response
     dealer_doc = json_result[0]
+    
     dealer_obj = CarDealer(address=dealer_doc["address"], city=dealer_doc["city"], full_name=dealer_doc["full_name"],
                            id=dealer_doc["id"], lat=dealer_doc["lat"], long=dealer_doc["long"],
                            short_name=dealer_doc["short_name"],
@@ -118,7 +118,7 @@ def get_dealer_reviews_from_cf(url, dealer_id):
     json_result = get_request(url, dealerId=dealer_id)
 
     if json_result:
-        print(json_result)
+        
         # Get all review data from the response
         reviews = json_result
         # For every review in the response

@@ -30,6 +30,7 @@ app.use(express.json());
 
 // Define a route to get all dealerships with optional state and ID filters
 app.get('/dealerships/get', (req, res) => {
+    
     const { state, id } = req.query;
 
     // Create a selector object based on query parameters
@@ -44,7 +45,7 @@ app.get('/dealerships/get', (req, res) => {
 
     const queryOptions = {
         selector,
-        limit: 10, // Limit the number of documents returned to 10
+        limit: 20, // Limit the number of documents returned to 10
     };
 
     db.find(queryOptions, (err, body) => {
