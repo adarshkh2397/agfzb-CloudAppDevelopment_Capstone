@@ -14,7 +14,7 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Car Dealership</a>
+                <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Car Dealership</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
@@ -75,11 +75,6 @@
 
         {% else %}
             <p></br>There are no reviews for this dealership.</br></p>
-            {% if user.is_authenticated %}
-                <div style="margin: 10px;">
-                    <a class="btn btn-primary" href="{% url 'djangoapp:add_review' dealer_id %}"><b>Write a car review</b></a>
-                </div>
-             {% endif %}
         {% endif %}
         </div>
 
