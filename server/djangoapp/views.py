@@ -93,9 +93,13 @@ def get_dealer_details(request, dealer_id):
     if request.method == "GET":
         url = 'https://adarshkhande-5000.theiadocker-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/get_reviews'
         reviews = get_dealer_reviews_from_cf(url, dealer_id=dealer_id)
+        dealer_url = "https://adarshkhande-3000.theiadocker-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
+        dealer = get_dealer_by_id(dealer_url, dealer_id=dealer_id)
+        
         context = {
             "reviews":  reviews,
-            "dealer_id": dealer_id
+            "dealer_id": dealer_id,
+            "dealer_name": dealer.full_name
         }
 
         return render(request, 'djangoapp/dealer_details.html', context)
